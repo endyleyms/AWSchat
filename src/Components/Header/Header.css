@@ -1,5 +1,5 @@
 .header-section{
-  background-color: #fff;
+  background-color: #dfdbd2;
   width: 100%;
   position: absolute;
   top:1px
@@ -9,7 +9,7 @@
   flex-direction: row;
   justify-content: space-between;
   height: 60px;
-  border: 1px solid;
+  border: 2px solid;
   border-color:#dfdbd2;
 }
 .logo-image{
@@ -22,12 +22,14 @@
   justify-content: center;
   align-items: center;
   width: 20%;
-  background-color: #fff;
+  background-color: #dfdbd2;
   border: 1px;
 }
 .user-image{
-  max-width: 80px;
-  max-height: 70px;
+  max-width: 20%;
+  max-height: 100%;
+  background-color: #dfdbd2;
+  border-radius: 100px;
 }
 .name{
   font-size: 18px;
