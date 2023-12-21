@@ -1,5 +1,6 @@
 import { useState } from "react";
 import UserPool, {getAttributeList, getCognitoUser} from '/src/AWS/UserPool.js';
+import './SingUp.css'
 
 
 const SignUp = () => {
@@ -48,30 +49,30 @@ const SignUp = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input type="text" name="username" value={username} onChange={(e)=>setUserName(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input type="email" name="email" value={mail} onChange={(e)=>setMail(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Phone:
-          <input type="phone" name="phone" value={phone} onChange={(e)=>setPhone(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
-        </label>
-        <br />
-        <button type="submit">Sign Up</button>
-      </form>
+    <div className="singup-container">
+      <div className="form-section">
+        <form className="form" onSubmit={handleSubmit} aria-label="sing up fomr">
+          <label aria-label="input section">
+            <input className="input-form" placeholder="Username:" type="text" name="username" value={username} onChange={(e)=>setUserName(e.target.value)} />
+          </label>
+          <br />
+          <label aria-label="input section">
+            <input className="input-form" placeholder="Email:" type="email" name="email" value={mail} onChange={(e)=>setMail(e.target.value)} />
+          </label>
+          <br />
+          <label aria-label="input section">
+            <input className="input-form" placeholder="Phone: +57number" type="phone" name="phone" value={phone} onChange={(e)=>setPhone(e.target.value)} />
+          </label>
+          <br />
+          <label aria-label="input section">
+            <input className="input-form" placeholder="Password:" type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+          </label>
+          <br />
+          <button className="button" type="submit">Sign Up</button>
+          <br />
+          <p>Already have an account? Log in <a className="enlace" href="/login">here</a>.</p>
+        </form>
+      </div>
       {/* <form onSubmit={handleConfirmRegister}>
         <label>
           Code:
@@ -80,6 +81,12 @@ const SignUp = () => {
         <br />
         <button type="submit">Confirm</button>
       </form> */}
+      <div className="info-section" aria-label="information section">
+        <h1>WELCOME</h1>
+        <img src="/src/assets/nuatechnology_logo.png" alt="Logo Nua" />
+        <h2>Automatiza la experiencia de tus clientes</h2>
+        <span>Potencia tu área de marketing, ventas o servicio, con un partner centrado en las interacciones de alto valor.</span>
+      </div>
     </div>
   )
 }
