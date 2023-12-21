@@ -1,5 +1,6 @@
 import { useState } from "react";
 import UserPool, {getAttributeList, getCognitoUser} from '/src/AWS/UserPool.js';
+import { useNavigate } from 'react-router-dom';
 import './SingUp.css'
 
 
@@ -10,6 +11,8 @@ const SignUp = () => {
  const [password, setPassword]= useState('');
  const [dataConfirm, setData] = useState();
  const [code, setCode] = useState();
+
+ const navigate = useNavigate();
 
 
   const handleSubmit = (e) => {
@@ -36,6 +39,7 @@ const SignUp = () => {
         setData(data.user.username)
       }
     });
+    navigate('/chat');
   };
 
   const handleConfirmRegister  = async () =>{

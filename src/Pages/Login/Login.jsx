@@ -1,12 +1,15 @@
 import { useState } from "react";
 import {CognitoUser, AuthenticationDetails} from "amazon-cognito-identity-js";
 import UserPool from '/src/AWS/UserPool.js';
+import { useNavigate } from 'react-router-dom';
 import './Login.css'
 
 
 const Login = () => {
   const [username, setUserName]= useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const user = new CognitoUser({
     Username: username,
@@ -29,6 +32,7 @@ const Login = () => {
         console.log("newPasswordRequiered: ", data)
       },
     });
+    navigate('/chat');
   }
 
 
