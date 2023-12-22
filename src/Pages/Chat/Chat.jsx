@@ -25,12 +25,19 @@ function Chat() {
       <Header/>
       <div className='body-section'>
         <div className='panel-section'>
-          {users?
-          users?.map((user, index)=>{
-            return<Card user={user} key={index}/>
-          }):
-          <Card/>
-          }
+          <div className='div-panel'>
+            <p>Chats Rooms</p>
+            <Card/>
+          </div>
+          <div className='div-panel'>
+            <p>Users</p>
+            {users?
+            users?.map((user, index)=>{
+              return<Card user={user} key={index}/>
+            }):
+            <Card/>
+            }
+          </div>
         </div>
         <div className='view-chat-section'>
           {/* <div className='info-chat'>

@@ -127,3 +127,15 @@ export const listMessages = /* GraphQL */ `
     }
   }
 `;
+
+// export const listMyRooms = /* GraphQL */ `
+//   query listChatRooms(filter: {chatRoomUserOneId: {eq: "f8b1eff4-5013-46c8-a52b-9e278131087d"}}) {
+//     nextToken
+//     items {
+//       chatRoomUserOneId
+//       chatRoomUserTwoId
+//       createdAt
+//       id
+//     }
+//   }
+// `;

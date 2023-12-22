@@ -14,6 +14,13 @@
   padding: 10px;
   padding-top: 30px;
   overflow-y: auto;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.div-panel{
+  overflow-y: auto;
+  border-top: 1px solid;
+  border-top-color:#dfdbd2;
 }
 .view-chat-section{
   border: 1px solid;

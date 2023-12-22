@@ -24,7 +24,7 @@ function Card(user) {
   // }
 
   return (
-    <button className='card-section' onClick={getRoom}>
+    <button className='card-section'>
         <img className='photo-card' src="/src/assets/user.png" alt="profile photo" />
         <div className='info-card'>
           <h2 className='name-card'>Name: {user?.user?.username}</h2>
