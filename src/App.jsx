@@ -7,9 +7,8 @@ import Chat from "./Pages/Chat/Chat";
 //configuration aws
 import { Amplify } from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
-//import amplifyconfig from '.amplifyconfiguration.json';
+import amplifyconfig from './amplifyconfiguration.json';
 Amplify.configure(amplifyconfig);
-import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 
 
 function App() {
