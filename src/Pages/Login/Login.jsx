@@ -3,12 +3,13 @@ import {CognitoUser, AuthenticationDetails} from "amazon-cognito-identity-js";
 import UserPool from '/src/AWS/UserPool.js';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
+import * as queries from "../../graphql/queries";
+import { signIn } from 'aws-amplify/auth';
 
 
 const Login = () => {
   const [username, setUserName]= useState('');
   const [password, setPassword] = useState('');
-
   const navigate = useNavigate();
 
   const user = new CognitoUser({
@@ -19,8 +20,21 @@ const Login = () => {
     Username: username,
     Password: password
   });
-  const handleLogin =(e)=>{
+
+  // async function signIn({ username, password }) {
+  //   try {
+  //     await signIn({ username, password });
+  //   } catch (error) {
+  //     console.log('error signing in', error);
+  //   }
+  // }
+  const handleLogin = async(e)=>{
     e.preventDefault();
+    try {
+      await signIn({ username, password });
+    } catch (error) {
+      console.log('error signing in', error);
+    }
     user.authenticateUser(authDetails, {
       onSuccess: (data)=>{
         console.log("onSuccess: ", data)
@@ -32,7 +46,7 @@ const Login = () => {
         console.log("newPasswordRequiered: ", data)
       },
     });
-    navigate('/chat');
+    console.log('funcions de login')
   }
 
 
@@ -41,7 +55,7 @@ const Login = () => {
       <div className="form-section">
         <form  className="form" onSubmit={handleLogin}>
           <label>
-            <input className="input-form" placeholder="Email:" type="email" name="email" value={username} onChange={(e)=>setUserName(e.target.value)}/>
+            <input className="input-form" placeholder="Username: " type="name" name="username" value={username} onChange={(e)=>setUserName(e.target.value)}/>
           </label>
           <br />
           <label>

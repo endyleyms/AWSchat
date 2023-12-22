@@ -139,3 +139,13 @@ export const listMessages = /* GraphQL */ `
 //     }
 //   }
 // `;
+
+// export const listMessagesByRoom = /* GraphQL */ `
+//   query listMessages(filter: {chatRoomMessagesId: {eq: "f8b1eff4-5013-46cf5c05770-aaea-40de-b4cb-d417c2b03a1e8-a52b-9e278131087d"}}) {
+//     items {
+//       content
+//       createdAt
+//       messageUserOneId
+//     }
+//   }
+// `;

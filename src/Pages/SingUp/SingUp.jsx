@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import './SingUp.css'
 import { generateClient } from 'aws-amplify/api';
 import * as mutations from '../../graphql/mutations';
+
 const client = generateClient();
 
 
 const SignUp = () => {
  const [username, setUserName]= useState('');
- const [mail, setMail]= useState('');
+ const [email, setMail]= useState('');
  const [phone, setPhone]= useState('');
  const [password, setPassword]= useState('');
  const [dataConfirm, setData] = useState();
@@ -18,11 +19,15 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const handleCreateUser = async ()=>{
-    const createUser = await client.graphql({
-      query: mutations.createUser,
-      variables: { input: {email: mail, username: username} }
-    });
-    console.log('data',createUser)
+    try {
+      const createUser = await client.graphql({
+        query: mutations.createUser,
+        variables: { input: {email: email, username: username} }
+      });
+      console.log('data',createUser)
+    } catch (error) {
+      console.error(error)
+    }
 
   }
 
@@ -31,7 +36,7 @@ const SignUp = () => {
     const attributes = [
       {
         Name: 'email',
-        Value: mail,
+        Value: email,
       },
       {
         Name: 'phone_number',
@@ -54,15 +59,15 @@ const SignUp = () => {
     navigate('/chat');
   };
 
-  const handleConfirmRegister  = async () =>{
-    const cognitoUser = getCognitoUser(dataConfirm );
-    cognitoUser.confirmRegistration(code, true, function(err, result) {
-        if (err) {
-            alert(err.message || JSON.stringify(err));
-            return;
-        }
-    });
-  }
+  // const handleConfirmRegister  = async () =>{
+  //   const cognitoUser = getCognitoUser(dataConfirm );
+  //   cognitoUser.confirmRegistration(code, true, function(err, result) {
+  //       if (err) {
+  //           alert(err.message || JSON.stringify(err));
+  //           return;
+  //       }
+  //   });
+  // }
 
   return (
     <div className="singup-container">
@@ -73,7 +78,7 @@ const SignUp = () => {
           </label>
           <br />
           <label aria-label="input section">
-            <input className="input-form" placeholder="Email:" type="email" name="email" value={mail} onChange={(e)=>setMail(e.target.value)} />
+            <input className="input-form" placeholder="Email:" type="email" name="email" value={email} onChange={(e)=>setMail(e.target.value)} />
           </label>
           <br />
           <label aria-label="input section">
@@ -89,7 +94,7 @@ const SignUp = () => {
           <p>Already have an account? Log in <a className="enlace" href="/login">here</a>.</p>
         </form>
       </div>
-      {/* <form onSubmit={handleConfirmRegister}>
+      {/* <form onSubmit={handleSignUpConfirmation}>
         <label>
           Code:
           <input type="name" name="code" value={code} onChange={(e)=>setCode(e.target.value)}/>

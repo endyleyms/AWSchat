@@ -16,7 +16,8 @@
         "nuaapi1": {}
       },
       "auth": {
-        "nuaapi1290398c7": {}
+        "nuaapi1290398c7": {},
+        "userPoolGroups": {}
       }
     }
   }

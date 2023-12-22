@@ -9,17 +9,29 @@ import { generateClient } from "aws-amplify/api";
 import * as queries from "../../graphql/queries";
 const client = generateClient();
 
-function Chat() {
 
+function Chat() {
+  const [selected, setSelected]=useState()
   const [users, setUsers]=useState();
+
+  const handleSelect =(roomChat)=>{
+    setSelected(roomChat)
+  }
+
+
   const getAllUsers = async () => {
-    const listUsers = await client.graphql({ query: queries.listUsers });
-    setUsers(listUsers?.data?.listUsers?.items)
+    try {
+      const listUsers = await client.graphql({ query: queries.listUsers });
+      setUsers(listUsers?.data?.listUsers?.items)
+    } catch (error) {
+      console.error(error)
+    }
   };
 
   useEffect(()=>{
     getAllUsers();
   },[])
+
   return (
     <div className='container-chat'>
       <Header/>
