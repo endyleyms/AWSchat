@@ -4,6 +4,11 @@ import SignUp from './Pages/SingUp/SingUp'
 import Login from './Pages/Login/Login'
 import Chat from "./Pages/Chat/Chat";
 
+//configuration aws
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from './amplifyconfiguration.json';
+Amplify.configure(amplifyconfig);
+
 function App() {
 
   return (

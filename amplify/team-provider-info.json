@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nuaapi1-dev-184225-authRole",
+      "UnauthRoleArn": "arn:aws:iam::494996084466:role/amplify-nuaapi1-dev-184225-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::494996084466:role/amplify-nuaapi1-dev-184225-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-nuaapi1-dev-184225-deployment",
+      "UnauthRoleName": "amplify-nuaapi1-dev-184225-unauthRole",
+      "StackName": "amplify-nuaapi1-dev-184225",
+      "StackId": "arn:aws:cloudformation:us-east-1:494996084466:stack/amplify-nuaapi1-dev-184225/9953f0a0-a05a-11ee-9e66-0ac51c06cfb7",
+      "AmplifyAppId": "d209z4bp1t82kn"
+    },
+    "categories": {
+      "api": {
+        "nuaapi1": {}
+      }
+    }
+  }
+}
