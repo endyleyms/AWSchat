@@ -157,6 +157,7 @@ export const listMessagesByRoom = /* GraphQL */ `
         items {
           content
           messageUserOneId
+          createdAt
         }
       }
     }

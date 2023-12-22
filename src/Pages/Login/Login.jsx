@@ -14,18 +14,18 @@ const Login = () => {
   const navigate = useNavigate();
   const [code, setCode] = useState();
 
-  async function obtenerUsuarioActual() {
-    console.log('llega a obtener function')
-    try {
-      const user = await getCurrentUser();
-      console.log('Usuario actual:', user);
-      if(user){
-        user.getSession
-      }
-    } catch (error) {
-      console.error('Error al obtener el usuario actual:', error);
-    }
-  }
+  // async function obtenerUsuarioActual() {
+  //   console.log('llega a obtener function')
+  //   try {
+  //     const user = await getCurrentUser();
+  //     console.log('Usuario actual:', user);
+  //     if(user){
+  //       user.getSession
+  //     }
+  //   } catch (error) {
+  //     console.error('Error al obtener el usuario actual:', error);
+  //   }
+  // }
 
   const user = new CognitoUser({
     Username: username,
@@ -49,7 +49,6 @@ const Login = () => {
         console.log("newPasswordRequiered: ", data)
       },
     });
-    console.log('funcions de login')
     // obtenerUsuarioActual()
     navigate('/chat');
   }

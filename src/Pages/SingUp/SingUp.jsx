@@ -50,7 +50,6 @@ const SignUp = () => {
       if (err) {
         console.error(err);
       } else {
-        console.log(data.user.username)
         setData(data.user.username)
       }
     });

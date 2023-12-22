@@ -16,7 +16,6 @@ function Chat() {
   const [userMe, setUserMe]=useState();
   const [rooms, setRooms]=useState();
   const [messagesRoom, setMessagesRoom]= useState();
-  console.log("messages by rooms", messagesRoom?.id)
   const [selected, setSelected]= useState();
   const [sendMessage, setSendMessage]= useState();
 
@@ -55,7 +54,6 @@ function Chat() {
         variables: { input: {content: sendMessage, messageUserOneId: userId, chatRoomMessagesId:messagesRoom?.id } }
       });
       console.log('data',createMessage)
-      alert("Mensaje enviado")
     } catch (error) {
       console.error(error)
     }
