@@ -158,10 +158,19 @@ export const createMessage = /* GraphQL */ `
   ) {
     createMessage(input: $input, condition: $condition) {
       id
+      userOne {
+        id
+        username
+        email
+        createdAt
+        updatedAt
+        __typename
+      }
       content
       createdAt
       updatedAt
       chatRoomMessagesId
+      messageUserOneId
       __typename
     }
   }
@@ -173,10 +182,19 @@ export const updateMessage = /* GraphQL */ `
   ) {
     updateMessage(input: $input, condition: $condition) {
       id
+      userOne {
+        id
+        username
+        email
+        createdAt
+        updatedAt
+        __typename
+      }
       content
       createdAt
       updatedAt
       chatRoomMessagesId
+      messageUserOneId
       __typename
     }
   }
@@ -188,10 +206,19 @@ export const deleteMessage = /* GraphQL */ `
   ) {
     deleteMessage(input: $input, condition: $condition) {
       id
+      userOne {
+        id
+        username
+        email
+        createdAt
+        updatedAt
+        __typename
+      }
       content
       createdAt
       updatedAt
       chatRoomMessagesId
+      messageUserOneId
       __typename
     }
   }

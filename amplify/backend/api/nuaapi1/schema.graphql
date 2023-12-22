@@ -12,12 +12,13 @@ type User @model {
 type chatRoom @model {
   id: ID!
   userOne: User! @hasOne
-  userTwo: User @hasOne
+  userTwo: User! @hasOne
   messages: [Message] @hasMany
 }
 
 type Message @model {
   id: ID!
+  userOne: User! @hasOne
   content: String!
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!

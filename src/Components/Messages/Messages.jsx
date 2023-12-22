@@ -3,15 +3,15 @@ import './Messages.css';
 
 function Messages() {
   return (
-    <div class="chat-messages">
-      <div class="message-sent">
+    <div className="chat-messages">
+      <div className="message-sent">
         <div></div>
-        <div class="message-content-sent">
+        <div className="message-content-sent">
           <p>Tu mensaje enviado</p>
         </div>
       </div>
-      <div class="message-received">
-        <div class="message-content-received">
+      <div className="message-received">
+        <div className="message-content-received">
           <p>Mensaje recibido</p>
         </div>
         <div></div>

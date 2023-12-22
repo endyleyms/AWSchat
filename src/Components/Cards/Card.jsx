@@ -1,11 +1,14 @@
 import React from 'react'
 import './Card.css'
 
-function Card() {
+function Card(user) {
+  console.log(user.user)
   return (
     <button className='card-section'>
         <img className='photo-card' src="/src/assets/user.png" alt="profile photo" />
-        <h2 className='name-card'>Name</h2>
+        <div className='info-card'>
+          <h2 className='name-card'>Name: {user?.user?.username}</h2>
+        </div>
     </button>
   )
 }

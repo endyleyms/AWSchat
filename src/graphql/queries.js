@@ -89,10 +89,19 @@ export const getMessage = /* GraphQL */ `
   query GetMessage($id: ID!) {
     getMessage(id: $id) {
       id
+      userOne {
+        id
+        username
+        email
+        createdAt
+        updatedAt
+        __typename
+      }
       content
       createdAt
       updatedAt
       chatRoomMessagesId
+      messageUserOneId
       __typename
     }
   }
@@ -110,6 +119,7 @@ export const listMessages = /* GraphQL */ `
         createdAt
         updatedAt
         chatRoomMessagesId
+        messageUserOneId
         __typename
       }
       nextToken

@@ -10,8 +10,14 @@
   border: 1px solid;
   border-color:#dfdbd2;
 }
+.info-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .name-card{
-  font-size: 14px;
+  font-size: 10px;
   color: #4a5278;
 }
 .photo-card{

@@ -14,6 +14,9 @@
     "categories": {
       "api": {
         "nuaapi1": {}
+      },
+      "auth": {
+        "nuaapi1290398c7": {}
       }
     }
   }

@@ -137,10 +137,19 @@ export const onCreateMessage = /* GraphQL */ `
   subscription OnCreateMessage($filter: ModelSubscriptionMessageFilterInput) {
     onCreateMessage(filter: $filter) {
       id
+      userOne {
+        id
+        username
+        email
+        createdAt
+        updatedAt
+        __typename
+      }
       content
       createdAt
       updatedAt
       chatRoomMessagesId
+      messageUserOneId
       __typename
     }
   }
@@ -149,10 +158,19 @@ export const onUpdateMessage = /* GraphQL */ `
   subscription OnUpdateMessage($filter: ModelSubscriptionMessageFilterInput) {
     onUpdateMessage(filter: $filter) {
       id
+      userOne {
+        id
+        username
+        email
+        createdAt
+        updatedAt
+        __typename
+      }
       content
       createdAt
       updatedAt
       chatRoomMessagesId
+      messageUserOneId
       __typename
     }
   }
@@ -161,10 +179,19 @@ export const onDeleteMessage = /* GraphQL */ `
   subscription OnDeleteMessage($filter: ModelSubscriptionMessageFilterInput) {
     onDeleteMessage(filter: $filter) {
       id
+      userOne {
+        id
+        username
+        email
+        createdAt
+        updatedAt
+        __typename
+      }
       content
       createdAt
       updatedAt
       chatRoomMessagesId
+      messageUserOneId
       __typename
     }
   }

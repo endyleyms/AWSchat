@@ -8,8 +8,8 @@ import { USER_POOL_ID, CLIENT_ID } from "dotenv";
 
 //objeto empleado con las credenciales de userpool y el client id de aws cognito
 const poolData = {
-  UserPoolId: "",
-  ClientId: "",
+  UserPoolId: "us-east-1_y36bv10TN",
+  ClientId: "77h1rbv91rj1gaj6kgtncclfb7",
 };
 export default new CognitoUserPool(poolData);
 
