@@ -4,13 +4,28 @@ import UserPool from '/src/AWS/UserPool.js';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
 import * as queries from "../../graphql/queries";
-import { signIn } from 'aws-amplify/auth';
+import { getCurrentUser } from 'aws-amplify/auth';
+import { useEffect } from "react";
 
 
 const Login = () => {
   const [username, setUserName]= useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const [code, setCode] = useState();
+
+  async function obtenerUsuarioActual() {
+    console.log('llega a obtener function')
+    try {
+      const user = await getCurrentUser();
+      console.log('Usuario actual:', user);
+      if(user){
+        user.getSession
+      }
+    } catch (error) {
+      console.error('Error al obtener el usuario actual:', error);
+    }
+  }
 
   const user = new CognitoUser({
     Username: username,
@@ -21,20 +36,8 @@ const Login = () => {
     Password: password
   });
 
-  // async function signIn({ username, password }) {
-  //   try {
-  //     await signIn({ username, password });
-  //   } catch (error) {
-  //     console.log('error signing in', error);
-  //   }
-  // }
   const handleLogin = async(e)=>{
     e.preventDefault();
-    try {
-      await signIn({ username, password });
-    } catch (error) {
-      console.log('error signing in', error);
-    }
     user.authenticateUser(authDetails, {
       onSuccess: (data)=>{
         console.log("onSuccess: ", data)
@@ -47,7 +50,11 @@ const Login = () => {
       },
     });
     console.log('funcions de login')
+    obtenerUsuarioActual()
+    navigate('/chat');
   }
+
+
 
 
   return (

@@ -13,7 +13,6 @@ import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 
 
 function App() {
-  // console.log('user', user)
 
   return (
     <BrowserRouter>

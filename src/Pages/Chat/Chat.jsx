@@ -11,13 +11,9 @@ const client = generateClient();
 
 
 function Chat() {
-  const [selected, setSelected]=useState()
   const [users, setUsers]=useState();
-
-  const handleSelect =(roomChat)=>{
-    setSelected(roomChat)
-  }
-
+  const [userMe, setUserMe]=useState();
+  const [rooms, setRooms]=useState();
 
   const getAllUsers = async () => {
     try {
@@ -28,18 +24,45 @@ function Chat() {
     }
   };
 
+  const getMyUser = async () => {
+    const userId = "f8b1eff4-5013-46c8-a52b-9e278131087d"
+    try {
+      const getUser = await client.graphql({ query: queries.getUser, variables: { id: userId }, });
+      setUserMe(getUser?.data?.getUser)
+    } catch (error) {
+      console.error(error)
+    }
+  };
+
+  const getAllMyRooms = async () => {
+    try {
+      const listRooms = await client.graphql({ query: queries.listMyRooms });
+      setRooms(listRooms?.data?.listChatRooms?.items);
+    } catch (error) {
+      console.error(error)
+    }
+  };
+  console.log('rooms', rooms)
+
   useEffect(()=>{
     getAllUsers();
+    getMyUser();
+    getAllMyRooms();
   },[])
 
   return (
     <div className='container-chat'>
-      <Header/>
+      <Header user={userMe}/>
       <div className='body-section'>
         <div className='panel-section'>
           <div className='div-panel'>
             <p>Chats Rooms</p>
+            {rooms?
+            rooms?.map((room, index)=>{
+              return<Card myRoom={room} key={index}/>
+            }):
             <Card/>
+            }
           </div>
           <div className='div-panel'>
             <p>Users</p>
