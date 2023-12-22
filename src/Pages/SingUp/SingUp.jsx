@@ -2,6 +2,9 @@ import { useState } from "react";
 import UserPool, {getAttributeList, getCognitoUser} from '/src/AWS/UserPool.js';
 import { useNavigate } from 'react-router-dom';
 import './SingUp.css'
+import { generateClient } from 'aws-amplify/api';
+import * as mutations from '../../graphql/mutations';
+const client = generateClient();
 
 
 const SignUp = () => {
@@ -12,8 +15,16 @@ const SignUp = () => {
  const [dataConfirm, setData] = useState();
  const [code, setCode] = useState();
 
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
+  const handleCreateUser = async ()=>{
+    const createUser = await client.graphql({
+      query: mutations.createUser,
+      variables: { input: {email: mail, username: username} }
+    });
+    console.log('data',createUser)
+
+  }
 
   const handleSubmit = (e) => {
     //datos requeridos para hacer el proceso de registro
@@ -39,6 +50,7 @@ const SignUp = () => {
         setData(data.user.username)
       }
     });
+    handleCreateUser();
     navigate('/chat');
   };
 
