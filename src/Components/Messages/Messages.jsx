@@ -2,7 +2,6 @@ import React from 'react';
 import './Messages.css';
 
 function Messages({messagesRoom}) {
-  console.log('messagesRoom', messagesRoom?.messages?.items)
   const messages = messagesRoom?.messages?.items
   const meId= "f8b1eff4-5013-46c8-a52b-9e278131087d"
   return (

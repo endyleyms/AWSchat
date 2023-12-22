@@ -7,6 +7,7 @@ import Messages from '../../Components/Messages/Messages';
 //aws
 import { generateClient } from "aws-amplify/api";
 import * as queries from "../../graphql/queries";
+import * as mutations from '../../graphql/mutations';
 const client = generateClient();
 
 
@@ -15,7 +16,9 @@ function Chat() {
   const [userMe, setUserMe]=useState();
   const [rooms, setRooms]=useState();
   const [messagesRoom, setMessagesRoom]= useState();
+  console.log("messages by rooms", messagesRoom?.id)
   const [selected, setSelected]= useState();
+  const [sendMessage, setSendMessage]= useState();
 
   const getAllUsers = async () => {
     try {
@@ -26,8 +29,8 @@ function Chat() {
     }
   };
 
+  const userId = "f8b1eff4-5013-46c8-a52b-9e278131087d"
   const getMyUser = async () => {
-    const userId = "f8b1eff4-5013-46c8-a52b-9e278131087d"
     try {
       const getUser = await client.graphql({ query: queries.getUser, variables: { id: userId }, });
       setUserMe(getUser?.data?.getUser)
@@ -45,11 +48,24 @@ function Chat() {
     }
   };
 
+  const hanldeSendMessage = async()=>{
+    try {
+      const createMessage = await client.graphql({
+        query: mutations.sendMessagesRoom,
+        variables: { input: {content: sendMessage, messageUserOneId: userId, chatRoomMessagesId:messagesRoom?.id } }
+      });
+      console.log('data',createMessage)
+      alert("Mensaje enviado")
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   useEffect(()=>{
     getAllUsers();
     getMyUser();
     getAllMyRooms();
-  },[])
+  },[messagesRoom])
 
   return (
     <div className='container-chat'>
@@ -86,10 +102,12 @@ function Chat() {
               <Messages/>
               }
             </div>
+            {selected &&
             <div className='input-section'>
-              <input className='input' placeholder='Write your message' type="text" />
-              <button className='send-button'>Send</button>
+              <input className='input' placeholder='Write your message' type="text"  value={sendMessage} onChange={(e)=>setSendMessage(e.target.value)}/>
+              <button className='send-button' onClick={hanldeSendMessage}>Send</button>
             </div>
+            }
         </div>
       </div>
     </div>

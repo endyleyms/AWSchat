@@ -223,3 +223,15 @@ export const deleteMessage = /* GraphQL */ `
     }
   }
 `;
+export const sendMessagesRoom = /* GraphQL */ `
+  mutation CreateMessage(
+    $input: CreateMessageInput!
+    $condition: ModelMessageConditionInput
+  ) {
+    createMessage(input: $input, condition: $condition) {
+      chatRoomMessagesId
+      content
+      messageUserOneId
+    }
+  }
+`;
