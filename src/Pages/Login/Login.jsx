@@ -50,7 +50,7 @@ const Login = () => {
       },
     });
     console.log('funcions de login')
-    obtenerUsuarioActual()
+    // obtenerUsuarioActual()
     navigate('/chat');
   }
 

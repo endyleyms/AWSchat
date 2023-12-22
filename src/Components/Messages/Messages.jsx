@@ -1,22 +1,40 @@
 import React from 'react';
 import './Messages.css';
 
-function Messages() {
+function Messages({messagesRoom}) {
+  console.log('messagesRoom', messagesRoom?.messages?.items)
+  const messages = messagesRoom?.messages?.items
+  const meId= "f8b1eff4-5013-46c8-a52b-9e278131087d"
   return (
-    <div className="chat-messages">
-      <div className="message-sent">
-        <div></div>
-        <div className="message-content-sent">
-          <p>Tu mensaje enviado</p>
+    <>
+      {messagesRoom?
+      <div className="chat-messages">
+        {messages.map((message, index)=>{
+          return(
+            <>
+            {message?.messageUserOneId === meId ?
+            <div className="message-sent" key={index}>
+              <div></div>
+              <div className="message-content-sent">
+                <p>{message?.content}</p>
+              </div>
+            </div>
+            :
+            <div className="message-received">
+              <div className="message-content-received">
+                <p>{message?.content}</p>
+              </div>
+              <div></div>
+            </div>
+          }
+            </>
+          )
+        })}
         </div>
-      </div>
-      <div className="message-received">
-        <div className="message-content-received">
-          <p>Mensaje recibido</p>
-        </div>
-        <div></div>
-      </div>
-    </div>
+        :
+        <p>Select a chat</p>
+      }
+    </>
   )
 }
 

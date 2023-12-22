@@ -14,7 +14,6 @@ const SignUp = () => {
  const [phone, setPhone]= useState('');
  const [password, setPassword]= useState('');
  const [dataConfirm, setData] = useState();
- const [code, setCode] = useState();
 
   const navigate = useNavigate();
 

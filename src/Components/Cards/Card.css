@@ -10,6 +10,26 @@
   border: 1px solid;
   border-color:#dfdbd2;
 }
+.button-card{
+  width: 90%;
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items: center;
+  background-color: #fafafa;
+  border-style: none;
+}
+.button-chat{
+  width: 20%;
+  height: 50%;
+  font-size: 10px;
+  border-style: none;
+  background-color: #f5721d;
+  border-radius: 10px;
+  color: #fafafa;
+  margin-right: 10px;
+}
 .info-card{
   display: flex;
   flex-direction: column;

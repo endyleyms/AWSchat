@@ -6,10 +6,8 @@ import * as queries from "../../graphql/queries";
 const client = generateClient();
 
 
-function Card({user, myRoom}) {
-  console.log('users props', user)
-  console.log('my room', myRoom?.chatRoomUserTwoId)
-  const [room, setRoom]=useState();
+function Card({user, myRoom, setMessagesRoom, setSelected}) {
+  const [roomMessages, setRoomMessages]=useState();
   const [user2, setUser2]=useState();
   //trae los usuarios con los que tengo una sala de chat
   const getUser = async () => {
@@ -22,34 +20,61 @@ function Card({user, myRoom}) {
     }
   };
 
-  // console.log('userConfirm', userConfirm)
   const meId= "f8b1eff4-5013-46c8-a52b-9e278131087d"
-  const concatsIds = meId+user?.user?.id
-  // const createRomm = async ()=>{
-  //   // if(concatsIds ===)
-  //   const create = await client.graphql({
-  //     query: mutations.createChatRoom,
-  //     variables: { input: {chatRoomUserOneId: "f8b1eff4-5013-46c8-a52b-9e278131087d", chatRoomUserTwoId: user?.user?.id, id: concatsIds} }
-  //   });
-  //   console.log('create', create)
-  // }
+  const concatsIds = meId+user?.id
+  const chatsvalidate =(concatsIds)=>{
+    if(concatsIds === myRoom?.id){
+      return console.log('si tiene chat')
+    }
+  }
+  chatsvalidate(concatsIds)
+;
+  const createRomm = async ()=>{
+    try {
+      const create = await client.graphql({
+        query: mutations.createChatRoom,
+        variables: { input: {chatRoomUserOneId: meId, chatRoomUserTwoId: user?.id, id: concatsIds} }
+      });
+      console.log('se creo el room', create)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const getMessages = async ()=>{
+    try {
+      const getChatRoom = await client.graphql({ query: queries.listMessagesByRoom, variables: { id: myRoom?.id }, });
+      setRoomMessages(getChatRoom?.data?.getChatRoom)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleClick = () => {
+    const dataToSend = roomMessages;
+    setMessagesRoom(dataToSend);
+    setSelected(true)
+  };
 
   useEffect(()=>{
     getUser();
+    getMessages();
   },[])
 
   return (
     <>
     {user?
-
-    <button className='card-section'>
-        <img className='photo-card' src="/src/assets/user.png" alt="profile photo" />
-        <div className='info-card'>
-          <h2 className='name-card'>Name: {user?.username}</h2>
-        </div>
-    </button>
+    <div className='card-section'>
+      <button className='button-card' onClick={handleClick}>
+          <img className='photo-card' src="/src/assets/user.png" alt="profile photo" />
+          <div className='info-card'>
+            <h2 className='name-card'>Name: {user?.username}</h2>
+          </div>
+      </button>
+      <button className='button-chat' onClick={createRomm}>New</button>
+    </div>
     :
-    <button className='card-section'>
+    <button className='card-section' onClick={handleClick}>
         <img className='photo-card' src="/src/assets/user.png" alt="profile photo" />
         <div className='info-card'>
           <h2 className='name-card'>Name: {user2?.username}</h2>

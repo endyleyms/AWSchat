@@ -14,6 +14,8 @@ function Chat() {
   const [users, setUsers]=useState();
   const [userMe, setUserMe]=useState();
   const [rooms, setRooms]=useState();
+  const [messagesRoom, setMessagesRoom]= useState();
+  const [selected, setSelected]= useState();
 
   const getAllUsers = async () => {
     try {
@@ -42,7 +44,6 @@ function Chat() {
       console.error(error)
     }
   };
-  console.log('rooms', rooms)
 
   useEffect(()=>{
     getAllUsers();
@@ -59,7 +60,7 @@ function Chat() {
             <p>Chats Rooms</p>
             {rooms?
             rooms?.map((room, index)=>{
-              return<Card myRoom={room} key={index}/>
+              return<Card myRoom={room} key={index} setMessagesRoom={setMessagesRoom} setSelected={setSelected}/>
             }):
             <Card/>
             }
@@ -68,7 +69,7 @@ function Chat() {
             <p>Users</p>
             {users?
             users?.map((user, index)=>{
-              return<Card user={user} key={index}/>
+              return<Card user={user} key={index} setMessagesRoom={setMessagesRoom} setSelected={setSelected}/>
             }):
             <Card/>
             }
@@ -79,7 +80,11 @@ function Chat() {
             <h2 className='text-chat'>Ferney Medina</h2>
           </div> */}
             <div className='messages'>
+              {selected ?
+              <Messages messagesRoom={messagesRoom}/>
+              :
               <Messages/>
+              }
             </div>
             <div className='input-section'>
               <input className='input' placeholder='Write your message' type="text" />
