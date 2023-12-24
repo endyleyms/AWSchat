@@ -10,6 +10,7 @@ import '@aws-amplify/ui-react/styles.css';
 import amplifyconfig from './amplifyconfiguration.json';
 Amplify.configure(amplifyconfig);
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
+console.log('amplifyconfig', amplifyconfig)
 
 
 function App() {
