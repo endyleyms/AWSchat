@@ -63,7 +63,7 @@ function Chat() {
     getAllUsers();
     getMyUser();
     getAllMyRooms();
-  },[messagesRoom])
+  },[messagesRoom, rooms, users])
 
   return (
     <div className='container-chat'>

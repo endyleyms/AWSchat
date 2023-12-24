@@ -22,13 +22,7 @@ function Card({user, myRoom, setMessagesRoom, setSelected}) {
 
   const meId= "f8b1eff4-5013-46c8-a52b-9e278131087d"
   const concatsIds = meId+user?.id
-  const chatsvalidate =(concatsIds)=>{
-    if(concatsIds === myRoom?.id){
-      return console.log('si tiene chat')
-    }
-  }
-  chatsvalidate(concatsIds)
-;
+
   const createRomm = async ()=>{
     try {
       const create = await client.graphql({
@@ -59,7 +53,7 @@ function Card({user, myRoom, setMessagesRoom, setSelected}) {
   useEffect(()=>{
     getUser();
     getMessages();
-  },[])
+  },[roomMessages])
 
   return (
     <>
