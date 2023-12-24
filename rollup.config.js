@@ -1,10 +1,15 @@
-import json from "@rollup/plugin-json";
+// Ejemplo de configuración de alias en rollup.config.js
+import resolve from "rollup-plugin-node-resolve";
 
 export default {
-  input: "src/index.js",
-  output: {
-    dir: "output",
-    format: "cjs",
-  },
-  plugins: [json()],
+  // ... otras configuraciones ...
+  plugins: [
+    resolve({
+      alias: {
+        "./amplifyconfiguration.json":
+          "ruta/absoluta/a/amplifyconfiguration.json",
+      },
+    }),
+    // ... otros plugins ...
+  ],
 };
