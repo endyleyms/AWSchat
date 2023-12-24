@@ -1,18 +1,19 @@
 .container-chat{
-  width: 100vw;
+   /* position: fixed; */
+   width: 100vw;
+   height: 100vh;
 }
 .body-section{
   display: grid;
-  grid-template-columns: 0.5fr 2fr;
+  grid-template-columns: 1fr 4fr;
   height: 100vh;
 }
 .panel-section{
-  position:static;
   height: 100%;
   border: 1px solid;
   border-color:#dfdbd2;
   padding: 10px;
-  padding-top: 30px;
+  padding-top: 50px;
   overflow-y: auto;
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -26,6 +27,8 @@
   border: 1px solid;
   border-color:#dfdbd2;
   overflow-y: auto;
+  height: 100%;
+  padding-top: 50px;
 }
 .info-chat{
   border-bottom: 1px solid;

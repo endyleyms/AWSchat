@@ -60,7 +60,7 @@ function Card({user, myRoom, setMessagesRoom, setSelected}) {
     {user?
     <div className='card-section'>
       <button className='button-card' onClick={handleClick}>
-          <img className='photo-card' src="/src/assets/user.png" alt="profile photo" />
+          <img className='photo-card' src="https://banner2.cleanpng.com/20180728/sac/kisspng-computer-icons-user-symbol-light-client-icon-5b5cfd0bbe3066.907360791532820747779.jpg" alt="profile photo" />
           <div className='info-card'>
             <h2 className='name-card'>Name: {user?.username}</h2>
           </div>
@@ -69,7 +69,7 @@ function Card({user, myRoom, setMessagesRoom, setSelected}) {
     </div>
     :
     <button className='card-section' onClick={handleClick}>
-        <img className='photo-card' src="/src/assets/user.png" alt="profile photo" />
+        <img className='photo-card' src="https://banner2.cleanpng.com/20180728/sac/kisspng-computer-icons-user-symbol-light-client-icon-5b5cfd0bbe3066.907360791532820747779.jpg" alt="profile photo" />
         <div className='info-card'>
           <h2 className='name-card'>Name: {user2?.username}</h2>
         </div>

@@ -75,7 +75,7 @@ const Login = () => {
       </div>
       <div className="info-section">
         <h1>WELCOME</h1>
-        <img src="/src/assets/nuatechnology_logo.png" alt="Logo Nua" />
+        <img src="https://ci3.googleusercontent.com/mail-sig/AIorK4wJobngYaqpaPEwMfi08PZ0fg3iBBOHuqmaCfnhUpj-RInJcXeARZSNYguZMUycTyX8FxCviEY" alt="Logo Nua" />
         <h2>Automatiza la experiencia de tus clientes</h2>
         <span>Potencia tu área de marketing, ventas o servicio, con un partner centrado en las interacciones de alto valor.</span>
       </div>
