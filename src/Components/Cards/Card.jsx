@@ -53,7 +53,7 @@ function Card({user, myRoom, setMessagesRoom, setSelected}) {
   useEffect(()=>{
     getUser();
     getMessages();
-  },[roomMessages])
+  },[])
 
   return (
     <>

@@ -16,6 +16,7 @@ function Chat() {
   const [userMe, setUserMe]=useState();
   const [rooms, setRooms]=useState();
   const [messagesRoom, setMessagesRoom]= useState();
+  console.log('messagesRoom',messagesRoom?.messages?.items)
   const [selected, setSelected]= useState();
   const [sendMessage, setSendMessage]= useState();
 
@@ -48,6 +49,7 @@ function Chat() {
   };
 
   const hanldeSendMessage = async()=>{
+    const messages = [...messagesRoom?.messages?.items, sendMessage]
     try {
       const createMessage = await client.graphql({
         query: mutations.sendMessagesRoom,
@@ -63,7 +65,7 @@ function Chat() {
     getAllUsers();
     getMyUser();
     getAllMyRooms();
-  },[messagesRoom, rooms, users])
+  },[])
 
   return (
     <div className='container-chat'>
