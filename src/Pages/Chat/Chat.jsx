@@ -16,8 +16,7 @@ function Chat() {
   const [userMe, setUserMe]=useState();
   const [rooms, setRooms]=useState();
   const [messagesRoom, setMessagesRoom]= useState();
-  console.log('messagesRoom',messagesRoom?.messages?.items)
-  const [selected, setSelected]= useState();
+  const [selected, setSelected]= useState(false);
   const [sendMessage, setSendMessage]= useState();
 
   const getAllUsers = async () => {
@@ -76,7 +75,7 @@ function Chat() {
             <p>Chats Rooms</p>
             {rooms?
             rooms?.map((room, index)=>{
-              return<Card myRoom={room} key={index} setMessagesRoom={setMessagesRoom} setSelected={setSelected}/>
+              return<Card myRoom={room} key={index} setMessagesRoom={setMessagesRoom} setSelected={setSelected} selected={selected}/>
             }):
             <Card/>
             }

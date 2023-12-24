@@ -69,28 +69,30 @@ const SignUp = () => {
 
   return (
     <div className="singup-container">
-      <div className="form-section">
-        <form className="form" onSubmit={handleSubmit} aria-label="sing up fomr">
-          <label aria-label="input section">
-            <input className="input-form" placeholder="Username:" type="text" name="username" value={username} onChange={(e)=>setUserName(e.target.value)} />
-          </label>
-          <br />
-          <label aria-label="input section">
-            <input className="input-form" placeholder="Email:" type="email" name="email" value={email} onChange={(e)=>setMail(e.target.value)} />
-          </label>
-          <br />
-          <label aria-label="input section">
-            <input className="input-form" placeholder="Phone: +57number" type="phone" name="phone" value={phone} onChange={(e)=>setPhone(e.target.value)} />
-          </label>
-          <br />
-          <label aria-label="input section">
-            <input className="input-form" placeholder="Password:" type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
-          </label>
-          <br />
-          <button className="button" type="submit">Sign Up</button>
-          <br />
-          <p>Already have an account? Log in <a className="enlace" href="/login">here</a>.</p>
-        </form>
+      <div>
+        <div className="form-section">
+          <form className="form" onSubmit={handleSubmit} aria-label="sing up fomr">
+            <label aria-label="input section">
+              <input className="input-form" placeholder="Username:" type="text" name="username" value={username} onChange={(e)=>setUserName(e.target.value)} />
+            </label>
+            <br />
+            <label aria-label="input section">
+              <input className="input-form" placeholder="Email:" type="email" name="email" value={email} onChange={(e)=>setMail(e.target.value)} />
+            </label>
+            <br />
+            <label aria-label="input section">
+              <input className="input-form" placeholder="Phone: +57number" type="phone" name="phone" value={phone} onChange={(e)=>setPhone(e.target.value)} />
+            </label>
+            <br />
+            <label aria-label="input section">
+              <input className="input-form" placeholder="Password:" type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+            </label>
+            <br />
+            <button className="button" type="submit">Sign Up</button>
+            <br />
+            <p>Already have an account? Log in <a className="enlace" href="/login">here</a>.</p>
+          </form>
+        </div>
       </div>
       {/* <form onSubmit={handleSignUpConfirmation}>
         <label>
@@ -100,11 +102,13 @@ const SignUp = () => {
         <br />
         <button type="submit">Confirm</button>
       </form> */}
-      <div className="info-section" aria-label="information section">
-        <h1>WELCOME</h1>
-        <img src="https://ci3.googleusercontent.com/mail-sig/AIorK4wJobngYaqpaPEwMfi08PZ0fg3iBBOHuqmaCfnhUpj-RInJcXeARZSNYguZMUycTyX8FxCviEY" alt="Logo Nua" />
-        <h2>Automatiza la experiencia de tus clientes</h2>
-        <span>Potencia tu área de marketing, ventas o servicio, con un partner centrado en las interacciones de alto valor.</span>
+      <div>
+        <div className="info-section">
+          <h1>WELCOME</h1>
+          <img src="https://ci3.googleusercontent.com/mail-sig/AIorK4wJobngYaqpaPEwMfi08PZ0fg3iBBOHuqmaCfnhUpj-RInJcXeARZSNYguZMUycTyX8FxCviEY" alt="Logo Nua" />
+          <h2>Automatiza la experiencia de tus clientes</h2>
+          <span>Potencia tu área de marketing, ventas o servicio, con un partner centrado en las interacciones de alto valor.</span>
+        </div>
       </div>
     </div>
   )

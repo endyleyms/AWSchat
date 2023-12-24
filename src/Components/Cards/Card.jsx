@@ -6,7 +6,7 @@ import * as queries from "../../graphql/queries";
 const client = generateClient();
 
 
-function Card({user, myRoom, setMessagesRoom, setSelected}) {
+function Card({user, myRoom, setMessagesRoom, setSelected, selected}) {
   const [roomMessages, setRoomMessages]=useState();
   const [user2, setUser2]=useState();
   //trae los usuarios con los que tengo una sala de chat
@@ -47,7 +47,7 @@ function Card({user, myRoom, setMessagesRoom, setSelected}) {
   const handleClick = () => {
     const dataToSend = roomMessages;
     setMessagesRoom(dataToSend);
-    setSelected(true)
+    setSelected(!selected)
   };
 
   useEffect(()=>{
@@ -62,16 +62,16 @@ function Card({user, myRoom, setMessagesRoom, setSelected}) {
       <button className='button-card' onClick={handleClick}>
           <img className='photo-card' src="https://banner2.cleanpng.com/20180728/sac/kisspng-computer-icons-user-symbol-light-client-icon-5b5cfd0bbe3066.907360791532820747779.jpg" alt="profile photo" />
           <div className='info-card'>
-            <h2 className='name-card'>Name: {user?.username}</h2>
+            <h2 className='name-card'>{user?.username}</h2>
           </div>
       </button>
-      <button className='button-chat' onClick={createRomm}>New</button>
+      <button className='button-chat' onClick={createRomm}>+</button>
     </div>
     :
     <button className='card-section' onClick={handleClick}>
         <img className='photo-card' src="https://banner2.cleanpng.com/20180728/sac/kisspng-computer-icons-user-symbol-light-client-icon-5b5cfd0bbe3066.907360791532820747779.jpg" alt="profile photo" />
         <div className='info-card'>
-          <h2 className='name-card'>Name: {user2?.username}</h2>
+          <h2 className='name-card'>{user2?.username}</h2>
         </div>
     </button>
   }
