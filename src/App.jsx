@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Navigate, Outlet  } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css'
 import SignUp from './Pages/SingUp/SingUp'
 import Login from './Pages/Login/Login'
@@ -18,9 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SignUp/>} />
         <Route path="/login" element={<Login/>} />
-        {/* <Route element={<ProtectedRoutes />}> */}
-          <Route path="/chat" element={<Chat/>} />
-        {/* </Route> */}
+        <Route path="/chat" element={<Chat/>} />
       </Routes>
     </BrowserRouter>
 
