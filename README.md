@@ -30,3 +30,6 @@ Para ingresar al historial de chat especiífico, se podrá accder dando click so
 
 ### Deploy vercel
 https://aw-schat-e8ucquplc-endyleyms.vercel.app/
+
+### Video Demo explicativo
+https://www.loom.com/share/7461537ac209406ab9f78094cc500a7c
